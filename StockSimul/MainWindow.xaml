@@ -1,0 +1,75 @@
+﻿<Window x:Class="StockSimul.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StockSimul"
+        xmlns:mp="clr-namespace:StockSimul.UserControls.MyProfile"
+        xmlns:stock="clr-namespace:StockSimul.UserControls.Stock"
+        xmlns:cmd="clr-namespace:StockSimul.Scripts.Command"
+        mc:Ignorable="d" WindowState="Maximized"
+        Title="MainWindow" Height="1080" Width="1920">
+    <Grid Background="#1F1F1F">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="2.2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 좌측 패널 -->
+            <Border BorderBrush="Black" Grid.Column="0"
+                    BorderThickness="0,0,1,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="300"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
+
+                    <mp:MyProfile  Grid.Row="2"
+                                   x:Name="myProfile"/>
+
+
+                </Grid>
+            </Border>
+            <!-- 좌측 패널 End -->
+            
+            <!-- 가운데 패널 -->
+            <Border BorderBrush="Black" Grid.Column="1"
+                    BorderThickness="0,0,1,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="2.5*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="{Binding Path=CurrentDateTime, Source={x:Static cmd:Command.Instance}, StringFormat='{}{0:yyyy-MM-dd(ddd) HH:mm}'}"
+                                   HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                   Foreground="White" FontSize="30" FontWeight="Bold"
+                                   Margin="0,0,20,0">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Background="#383838"
+                          Margin="15,0">
+                        <stock:StockPanel/>
+                    </Grid>
+
+
+                    <Grid Grid.Row="2">
+                        <stock:PurchasePanel />
+                    </Grid>
+                    
+
+
+                </Grid>
+            </Border>
+            <!-- 가운데 패널 End-->
+
+        </Grid>
+    </Grid>
+</Window>

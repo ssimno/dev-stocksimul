@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="StockSimul.UserControls.Stock.PurchasePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StockSimul.UserControls.Stock"
+             mc:Ignorable="d" 
+             d:DesignHeight="469" d:DesignWidth="847">
+    <Grid>
+        <Grid Margin="15, 15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ListView ItemsSource="{Binding ProfileDisplay}" Grid.Row="0">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{x:Null}" />
+                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{x:Null}" />
+                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+
+                </ListView.ItemContainerStyle>
+                <ListView.Resources>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        <Setter Property="Background" Value="Gray"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+
+                    <DataTemplate x:Key="TotalPurchasePrice">
+                        <TextBlock Text="{Binding TotalPurchasePrice, StringFormat={}{0:N0}}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="TotalEvaluatedPrice">
+                        <TextBlock Text="{Binding TotalEvaluatedPrice, StringFormat={}{0:N0}}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black"  />
+                    </DataTemplate>
+                    <DataTemplate x:Key="EvaluationProfitAndLoss">
+                        <TextBlock Text="{Binding EvaluationProfitAndLoss, StringFormat={}{0:N0}}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{Binding ViewFontColor}" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="ProfitRate">
+                        <TextBlock Text="{Binding ProfitRate, StringFormat={}{0:N2}%}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{Binding ViewFontColor}" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="RealizedProfitAndLoss">
+                        <TextBlock Text="{Binding RealizedProfitAndLoss, StringFormat={}{0:N0}}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="TotalProfitAndLoss">
+                        <TextBlock Text="{Binding TotalProfitAndLoss, StringFormat={}{0:N0}}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="SellAll">
+                        <Button Content="일괄매도"
+                                Width="80"
+                                Command="{Binding SellAll}">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                            
+                        </Button>
+                    </DataTemplate>
+                    <!-- etc. -->
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="매입금액" CellTemplate="{StaticResource  TotalPurchasePrice}" Width="120"/>
+                        <GridViewColumn Header="평가금액" CellTemplate="{StaticResource TotalEvaluatedPrice}" Width="120"/>
+                        <GridViewColumn Header="평가손익" CellTemplate="{StaticResource EvaluationProfitAndLoss}" Width="120"/>
+                        <GridViewColumn Header="수익률" CellTemplate="{StaticResource ProfitRate}" Width="100"/>
+                        <GridViewColumn Header="실현손익" CellTemplate="{StaticResource RealizedProfitAndLoss}" Width="120"/>
+                        <GridViewColumn Header="총손익" CellTemplate="{StaticResource TotalProfitAndLoss}" Width="120"/>
+                        <GridViewColumn Header="일괄매도" CellTemplate="{StaticResource SellAll}" Width="100"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+
+
+            <ListView ItemsSource="{Binding PurchasedStockList}" Grid.Row="1"
+                      SelectionMode="Multiple" SelectionChanged="ListView_SelectionChanged">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="GhostWhite" />
+                                <Setter Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="GhostWhite" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    
+                </ListView.ItemContainerStyle>
+                <ListView.Resources>
+                    <DataTemplate x:Key="IsSelected">
+                        <CheckBox IsChecked="{Binding IsSelected}" 
+                                  HorizontalAlignment="Center" IsEnabled="False" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="StockName">
+                        <TextBlock Text="{Binding StockName}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="Quantity">
+                        <TextBlock Text="{Binding Quantity}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="PurchasePrice">
+                        <TextBlock Text="{Binding PurchasePrice, StringFormat={}{0:N0}}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="PurchaseAmount">
+                        <TextBlock Text="{Binding PurchaseAmount, StringFormat={}{0:N0}}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="CurrentPrice">
+                        <TextBlock Text="{Binding CurrentPrice, StringFormat={}{0:N0}}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{Binding ViewFontColor}" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="EvaluatedAmount">
+                        <TextBlock Text="{Binding EvaluatedAmount}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="NetProfit">
+                        <TextBlock Text="{Binding NetProfit}" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" />
+                    </DataTemplate>
+                    <!-- etc. -->
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="선택" CellTemplate="{StaticResource IsSelected}" Width="50"/>
+                        <GridViewColumn Header="종목명" CellTemplate="{StaticResource StockName}" Width="100"/>
+                        <GridViewColumn Header="수량" CellTemplate="{StaticResource Quantity}" Width="50"/>
+                        <GridViewColumn Header="매입단가" CellTemplate="{StaticResource PurchasePrice}" Width="100"/>
+                        <GridViewColumn Header="현재가" CellTemplate="{StaticResource CurrentPrice}" Width="100"/>
+                        <GridViewColumn Header="매입금액" CellTemplate="{StaticResource PurchaseAmount}" Width="100"/>
+                        <GridViewColumn Header="평가금액" CellTemplate="{StaticResource EvaluatedAmount}" Width="100"/>
+                        <GridViewColumn Header="평가순익" CellTemplate="{StaticResource NetProfit}" Width="100"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+    </Grid>
+</UserControl>

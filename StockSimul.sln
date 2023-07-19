@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockSimul", "StockSimul\StockSimul.csproj", "{E04F7978-F5C6-4CF4-BD67-79A14347D168}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUtilities", "CommonUtilities\CommonUtilities.csproj", "{5AE0E549-850B-495B-8839-EDB7F0005819}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E04F7978-F5C6-4CF4-BD67-79A14347D168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E04F7978-F5C6-4CF4-BD67-79A14347D168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E04F7978-F5C6-4CF4-BD67-79A14347D168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E04F7978-F5C6-4CF4-BD67-79A14347D168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AE0E549-850B-495B-8839-EDB7F0005819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AE0E549-850B-495B-8839-EDB7F0005819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AE0E549-850B-495B-8839-EDB7F0005819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AE0E549-850B-495B-8839-EDB7F0005819}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B222BE93-C8F8-4650-994F-3681E18A1B01}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="StockSimul.UserControls.Stock.StockItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StockSimul.UserControls.Stock"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             Height="100" Width="400">
+    <Grid Margin="5">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseUp">
+                <i:InvokeCommandAction Command="{Binding MouseUpCommand}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <Border BorderBrush="{Binding ViewSelectedColor, FallbackValue='#1A1515'}" BorderThickness="2"
+                CornerRadius="15"
+                Background="#545B61">
+            <Grid>
+                <Grid Margin="14,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <!-- 종목 이름 -->
+                        <Label Content="{Binding CompanyName, FallbackValue='삼성전자'}"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               FontSize="16" FontWeight="Bold" Foreground="White">
+                            
+                        </Label>
+                        <!-- 종목 이름 End -->
+
+                        <!-- 주가 -->
+                        <Label Content="{Binding ViewCurrentPrice, FallbackValue='146,000'}"
+                               HorizontalAlignment="Right" VerticalAlignment="Center"
+                               FontSize="15" FontWeight="Bold" Foreground="{Binding ViewFontColor, FallbackValue=Red}">
+
+                        </Label>
+                        <!-- 주가 End -->
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <!-- 타입 이름 -->
+                        <Label Content="{Binding IndustryType, FallbackValue='제조'}"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               FontSize="12" FontWeight="Normal" Foreground="#d3d3d3">
+
+                        </Label>
+                        <!-- 타입 이름 End -->
+
+                        <!-- 수익률 -->
+                        <Label Content="{Binding ViewPriceChange, FallbackValue='1,500 ▲  2.55'}"
+                               HorizontalAlignment="Right" VerticalAlignment="Center"
+                               FontSize="14" FontWeight="Normal" Foreground="{Binding ViewFontColor, FallbackValue=Red}">
+
+                        </Label>
+                        <!-- 수익률 End -->
+                    </Grid>
+                </Grid>
+                <Border BorderBrush="#1A1515" BorderThickness="0.8"
+                        VerticalAlignment="Center"
+                        Opacity="0.3"
+                        Margin="6,0"/>
+            </Grid>
+            
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1"
+                CornerRadius="15"
+                Background="Black" Opacity="0.8"
+                Visibility="{Binding DelistingVisible, FallbackValue=Collapsed}">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Text="상장폐지"
+                       Foreground="Red" FontSize="20" FontWeight="Bold">
+                
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="#1E1E1E" BorderThickness="1" CornerRadius="15" Margin="1"/>
+    </Grid>
+</UserControl>
