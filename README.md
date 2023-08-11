@@ -27,5 +27,5 @@
 - [ ] 주식 히스토리 기능
 - [ ] 디자인 작업
 
-## 소셜로그인
+## 프로그램 화면
 ![GIF](https://github.com/ssimno/dev-stocksimul/assets/138431003/7a4f7185-428c-45ac-bd1e-6481063b23d9)
